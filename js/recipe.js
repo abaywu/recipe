@@ -17,6 +17,34 @@ function showRecipe(no, ingredient, weight, percent){
 
 // loadData()將資料檔載入電腦並顯示在表格中
 function loadData(){
-    var data = {};
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", filePath , true);
+    rawFile.send(null);
+    rawFile.onreadystatechange = function (){
+        if(rawFile.readyState === 4){
+            if(rawFile.status === 200 || rawFile.status == 0){
+                var allText = rawFile.responseText;
+                // console.log(allText);
+                data = JSON.parse(allText);
+                fillData(data);
+            }
+        }
+    }     
+}
+
+// fillData()將資料填入表格內
+function fillData(data){
+    console.log(data.items[0]);
+    // 實作透過showRecipe()將資料填入表格中
     
 }
+
+function onInputFileChanged(){
+    files = fileInput.files;
+    filePath = URL.createObjectURL(files[0]);
+    loadData();
+}
+
+let fileInput  = document.getElementById('file-upload-input');
+let files = fileInput.files;
+let filePath = "";

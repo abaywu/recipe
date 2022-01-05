@@ -3,7 +3,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/recipe.js"></script>
     <title>食譜計算機</title>
 </header>
 
@@ -20,6 +19,9 @@
         </h1>
     </div>
     <div class="container">
+        <input id="file-upload-input" type="file" class="form-control" accept="*" onchange="onInputFileChanged()"/>
+    </div>
+    <div class="container">
         <table class="table">
             <caption>食物成份清單</caption>
             <thead>
@@ -34,6 +36,6 @@
             </tbody>
         </table>
     </div>
+    <script src="js/recipe.js"></script>
 </body>
-
 </html>
